@@ -102,7 +102,7 @@ public class Photo {
 	public String toString() {
 		return "(" + getId() + ") " + getTitle() + "\n" 
 				+ getDescription() + "\n" 
-				+ getTag() + " - "+ isVisible() + "\n" 
-				+ getUrl();
+				+ getTag() + " - " + isVisible() + "\n" 
+				+ getUrl() + "\n";
 	}
 }
