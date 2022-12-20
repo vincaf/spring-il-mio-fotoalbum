@@ -23,6 +23,7 @@
 						<th>Url</th>
 						<th>Tag</th>
 						<th>Visibile</th>
+						<th>Categorie</th>
 						<th>Azioni</th>
 					</tr>
 					<tr th:each="photo : ${photos}" th:object="${photo}">
@@ -32,6 +33,7 @@
 						<td> <img th:src="*{url}" class="img-fluid"></img> </td>
 						<td th:text="*{tag}"></td>
 						<td th:text="*{visible}"></td>
+						<td th:text="*{categories}"></td>
 						<td>
 							<a th:href="@{show/{id}(id=${photo.id})}" class="btn btn-sm btn-success mb-2">Dettagli</a>
 							<a th:href="@{edit/{id}(id=${photo.id})}" class="btn btn-sm btn-primary my-2">Modifica</a>

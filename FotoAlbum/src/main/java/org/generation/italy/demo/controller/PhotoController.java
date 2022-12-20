@@ -20,7 +20,7 @@ public class PhotoController {
 
 	@GetMapping("")
 	public String index(Model model) {
-		List<Photo> photos = photoService.findAll();
+		List<Photo> photos = photoService.findAllWithCategory();
 		model.addAttribute("photos", photos);
 		return "photo-index";
 	}
