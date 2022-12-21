@@ -133,6 +133,10 @@ public class Photo {
 			getCategories().add(category);
 	}
 	
+	public void removeCategory(Category category) {
+		getCategories().remove(category);
+	}
+	
 	@Override
 	public String toString() {
 		return "(" + getId() + ") " + getTitle() + "\n" 
