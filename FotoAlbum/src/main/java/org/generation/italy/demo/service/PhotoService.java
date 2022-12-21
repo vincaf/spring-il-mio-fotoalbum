@@ -33,6 +33,10 @@ public class PhotoService {
 		photoRepo.deleteById(id);
 	}
 	
+	public List<Photo> findByName(String query) {
+		return photoRepo.findByTitleContaining(query);
+	}
+	
 	@Transactional
 	public List<Photo> findAllWithCategory() {
 		List<Photo> photos = photoRepo.findAll();

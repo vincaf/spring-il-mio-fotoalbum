@@ -18,6 +18,13 @@
 			<div class="col-12 mb-2 d-flex justify-content-start">
 				<a class="btn btn-sm btn-primary" href="photo/create">Aggiungi una foto</a>
 			</div>
+			<div class="my-3">
+				Ricerca una foto:
+				<form class="d-flex align-items-center">
+					<input type="text" name="query" th:value="${query}" class="form-control">
+					<input type="submit" value="Cerca" class="btn btn-primary">
+				</form>
+			</div>
 			<div class="col-12">
 				<table th:if="${!photos.isEmpty()}" class="table table-dark">
 					<tr>

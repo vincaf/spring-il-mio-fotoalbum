@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
@@ -32,8 +33,8 @@ public class PhotoController {
 	private CategoryService categoryService;
 
 	@GetMapping("")
-	public String index(Model model) {
-		List<Photo> photos = photoService.findAllWithCategory();
+	public String index(Model model, @RequestParam(name = "query", required = false) String query) {
+		List<Photo> photos = query == null ? photoService.findAll() : photoService.findByName(query);
 		model.addAttribute("photos", photos);
 		return "photo-index";
 	}
