@@ -61,7 +61,6 @@
 		    <artifactId>font-awesome</artifactId>
 		    <version>5.15.4</version>
 		</dependency>
-		<!--		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -70,7 +69,6 @@
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity6</artifactId>
 		</dependency>
-					-->
 	</dependencies>
 
 	<build>
