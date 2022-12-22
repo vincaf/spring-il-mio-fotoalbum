@@ -30,6 +30,15 @@
                                 <h6 class="mt-2">Categorie: </h6>
                                 <span class="d-inline-block me-1 text-primary" v-for="category in photo.categories" :key="category.id">#{{category.name}} </span>
                             </div>
+
+                            <div v-if="photo.comments != null">
+                                <h6>Commenti: </h6>
+                                <ul>
+                                    <li v-for="comment in photo.comments" :key="comment.id">
+                                        <span>{{comment.text}}</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -81,6 +90,19 @@ export default {
                 .catch(error => {
                 console.log(error);
                 });
+        },
+
+        getPhotoComments(photoId) {
+        axios.get(API_URL + 'comments/by/photos/' + photoId)
+            .then(response => {
+                const photoComments = response.data;
+                if (photoComments == null) return
+                const index = this.getIndexFromPhotoId(photoId);
+                this.photos[index].comments = photoComments;
+            })
+            .catch(error => {
+                console.log(error);
+            });
         },
 
         getFilteredPhotos(){
