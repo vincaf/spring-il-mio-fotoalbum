@@ -13,7 +13,7 @@
                 </form>
             </div>
 
-            <div class="col-2" v-for="photo in photos"  :key="photo.id" :class="photo.visible ? ' ' : 'd-none'" 
+            <div class="col-3" v-for="photo in photos"  :key="photo.id" :class="photo.visible ? ' ' : 'd-none'" 
             @click="setActivePhotoIndex(getIndexFromPhotoId(photo.id)), getPhotoCategories(photo.id)">
                 
                 <div class="card" :class="photo.visible ? ' ' : 'd-none'">
