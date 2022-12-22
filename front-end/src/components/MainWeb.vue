@@ -27,18 +27,25 @@
                             
                             <div v-if="activePhotoIndex === getIndexFromPhotoId(photo.id)" class="pb-3">
                                 <h6>Descrizione:</h6> <span class="fst-italic fw-light"> {{photo.description}} </span>
-                                <h6 class="mt-2">Categorie: </h6>
-                                <span class="d-inline-block me-1 text-primary" v-for="category in photo.categories" :key="category.id">#{{category.name}} </span>
+                                <div v-if="photo.categories != null">
+                                    <h6 class="mt-2">Categorie: </h6>
+                                    <span class="d-inline-block me-1 text-primary" v-for="category in photo.categories" :key="category.id">#{{category.name}} </span>
+                                </div>
+                                <div v-if="photo.comments != null" class="mt-2">
+                                    <h6 class="d-inline-block mb-1">Commenti: </h6>
+                                    <ul>
+                                        <li v-for="comment in photo.comments" :key="comment.id">
+                                            <span>{{comment.text}}</span>
+                                        </li>
+                                    </ul>
+                                    <div class="fst-italic mb-1">scrivi un commento:</div>
+                                    <div class="d-flex align-items-center mb-2">
+                                    <input type="text" class="form-control" v-model="userComment">
+                                    <button class="btn btn-sm btn-success" @click="postComment(photo.id)">Invia</button>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div v-if="photo.comments != null">
-                                <h6>Commenti: </h6>
-                                <ul>
-                                    <li v-for="comment in photo.comments" :key="comment.id">
-                                        <span>{{comment.text}}</span>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -62,6 +69,8 @@ export default {
         return {
             photos: [],
             activePhotoIndex: ACTIVE_PHOTO_INDEX,
+            userComment: '',
+            newComment: {text: '', photo: ''},
             searchValue: '',
         }
     },
@@ -104,6 +113,20 @@ export default {
                 console.log(error);
             });
         },
+
+        postComment(photoId){
+        this.newComment.photo = photoId;
+        this.newComment.text = this.userComment;
+        axios.post(API_URL + 'comments/add/' + photoId , this.newComment)
+            .then(response => {
+            this.getPhotoComments(photoId);
+            this.userComment = '';
+            console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
 
         getFilteredPhotos(){
         if(this.searchValue === '') return this.getPhotos();
