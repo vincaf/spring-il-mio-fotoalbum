@@ -8,14 +8,27 @@
 	<title>FotoAlbum</title>
 </head>
 <body>
-	<header th:replace="~{frag :: header()}"></header>
-	
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+		  <div class="container">
+		    <a class="navbar-brand" href="/">FOTOALBUM</a>
+		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+		    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		      <div class="navbar-nav">
+		        <a th:href="@{/login}" class="nav-link">Login</a>
+		        <a th:href="@{/logout}" class="nav-link">Logout</a>
+		      </div>
+		    </div>
+		  </div>
+		</nav>
+
 	<div class="container-lg">
 		<div class="row">
 			<div class="col-12 text-center">
 				<h1 class="p-3">WELCOME ADMIN</h1>
 				<h5 class="fst-italic">benvenuto nella navigazione per admin</h5>
-				<h6>Clicca su uno dei pulsanti per essere indirizzato alla gestione degli elementi</h6>
+				<h6>Clicca su uno dei pulsanti per effettuare l'accesso ed essere indirizzato alla gestione degli elementi</h6>
 			</div>
 			<div class="col-12 d-flex justify-content-center align-items-center mt-3">
 				<a class="btn btn-sm btn-warning mx-2" href="/photo">Vai alle foto</a>
