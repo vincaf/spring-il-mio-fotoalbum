@@ -23,6 +23,10 @@
 			    	Visibile: <span class="fw-bold">[[*{visible}]]</span>
 			    </p>
 			    <p>Categorie: <span class="fw-bold" th:each="category : ${categories}" th:object="${category}">- [[*{name}]] </span></p>
+			    <h6 th:if="${!comments.isEmpty()}">Commenti:</h6>
+				<ul>
+					<li th:each="comment : ${comments}" th:object="${comment}">[[*{text}]]</li>
+				 </ul>
 			    <a href="/photo" class="btn btn-primary">Torna indietro</a>
 			  </div>
 			</div>
