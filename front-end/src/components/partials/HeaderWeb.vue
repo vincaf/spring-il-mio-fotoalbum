@@ -14,8 +14,8 @@
                 </div>
                 <form class="container-fluid w-50" id="search_bar">
                     <div class="input-group">
-                    <span class="input-group-text" id="basic-addon1">Search</span>
                     <input type="text" class="form-control" placeholder="Inserisci un titolo o un tag per cercare tra le foto" aria-label="Search" aria-describedby="basic-addon1">
+                    <span class="input-group-text" id="basic-addon1">Cerca</span>
                     </div>
                 </form>
             </div>

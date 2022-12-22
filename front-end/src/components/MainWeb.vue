@@ -15,7 +15,8 @@
                             </p>
                             
                             <div v-if="activePhotoIndex === getIndexFromPhotoId(photo.id)" class="pb-3">
-                                <h6>Categorie: </h6>
+                                <h6>Descrizione:</h6> <span class="fst-italic fw-light"> {{photo.description}} </span>
+                                <h6 class="mt-2">Categorie: </h6>
                                 <span class="d-inline-block me-1 text-primary" v-for="category in photo.categories" :key="category.id">#{{category.name}} </span>
                             </div>
                         </div>
