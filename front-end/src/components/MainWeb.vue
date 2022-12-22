@@ -1,6 +1,17 @@
 <template>
-    <div class="mt-4 container">
+    <div class="mt-3 container">
+        
         <div class="row">
+
+            <div class="col-12 d-flex mb-3">
+                <h6 class="text-primary mb-2">Inserisci un titolo o un tag per effettuare una ricerca</h6>
+                <form class="w-100" id="search_bar">
+                    <div class="input-group">
+                    <input type="text" class="form-control" v-model="searchValue" placeholder="Inserisci un titolo o un tag per cercare tra le foto" aria-label="Search" aria-describedby="basic-addon1">
+                    <span class="btn btn-success" id="basic-addon1" @click="getFilteredPhotos()">Cerca</span>
+                    </div>
+                </form>
+            </div>
 
             <div class="col-2" v-for="photo in photos"  :key="photo.id" :class="photo.visible ? ' ' : 'd-none'" 
             @click="setActivePhotoIndex(getIndexFromPhotoId(photo.id)), getPhotoCategories(photo.id)">
@@ -42,6 +53,7 @@ export default {
         return {
             photos: [],
             activePhotoIndex: ACTIVE_PHOTO_INDEX,
+            searchValue: '',
         }
     },
 
@@ -69,6 +81,17 @@ export default {
                 .catch(error => {
                 console.log(error);
                 });
+        },
+
+        getFilteredPhotos(){
+        if(this.searchValue === '') return this.getPhotos();
+            axios.get(API_URL + 'photos/search/' + this.searchValue)
+                .then(response => {
+                this.photos = response.data;
+            })
+            .catch(error => {
+                console.log(error);
+            });
         },
 
         setActivePhotoIndex(index){

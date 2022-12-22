@@ -12,12 +12,6 @@
                         <a class="nav-item nav-link" href="http://localhost:8080/">Backoffice</a>
                     </div>
                 </div>
-                <form class="container-fluid w-50" id="search_bar">
-                    <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Inserisci un titolo o un tag per cercare tra le foto" aria-label="Search" aria-describedby="basic-addon1">
-                    <span class="input-group-text" id="basic-addon1">Cerca</span>
-                    </div>
-                </form>
             </div>
         </nav>
     </header>
