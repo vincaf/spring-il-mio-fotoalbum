@@ -7,7 +7,7 @@
                 <h6 class="text-primary mb-2">Inserisci un titolo o un tag per effettuare una ricerca</h6>
                 <form class="w-100" id="search_bar">
                     <div class="input-group">
-                    <input type="text" class="form-control" v-model="searchValue" placeholder="Inserisci un titolo o un tag per cercare tra le foto" aria-label="Search" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" v-model="searchValue" @keyup="getFilteredPhotos()" placeholder="premendo INVIO la ricerca si resetterà" aria-label="Search" aria-describedby="basic-addon1">
                     <span class="btn btn-success" id="basic-addon1" @click="getFilteredPhotos()">Cerca</span>
                     </div>
                 </form>
