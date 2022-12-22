@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.generation.italy.demo.pojo.Category;
+import org.generation.italy.demo.pojo.Comment;
 import org.generation.italy.demo.pojo.Photo;
 import org.generation.italy.demo.pojo.Role;
 import org.generation.italy.demo.pojo.User;
 import org.generation.italy.demo.service.CategoryService;
+import org.generation.italy.demo.service.CommentService;
 import org.generation.italy.demo.service.PhotoService;
 import org.generation.italy.demo.service.RoleService;
 import org.generation.italy.demo.service.UserService;
@@ -30,6 +32,9 @@ public class FotoAlbumApplication implements CommandLineRunner {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private CommentService commentService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(FotoAlbumApplication.class, args);
@@ -71,8 +76,20 @@ public class FotoAlbumApplication implements CommandLineRunner {
 		photoService.save(photo2);
 		photoService.save(photo3);
 		photoService.save(photo4);
+		
+		Comment comment1 = new Comment("top!", photo1);
+		Comment comment2 = new Comment("grandissimo!", photo1);
+		Comment comment3 = new Comment("è veramente fantastico", photo2);
+		Comment comment4 = new Comment("sono pienamente d'accordo", photo3);
+		Comment comment5 = new Comment("meglio CR7", photo4);
 
-		System.err.println(photoService.findAllWithCategory());
+		commentService.save(comment1);
+		commentService.save(comment2);
+		commentService.save(comment3);
+		commentService.save(comment4);
+		commentService.save(comment5);
+
+		System.err.println(photoService.findAllWithCategoryAndComment());
 
 		Role admin = new Role("ADMIN");
 		roleService.save(admin);

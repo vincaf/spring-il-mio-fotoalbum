@@ -21,7 +21,7 @@ public class PhotoApiController {
 
 	@GetMapping("/all")
 	public List<Photo> getAll() {
-		return photoService.findAllWithCategory();
+		return photoService.findAll();
 	}
 	
 	@GetMapping("/search/{query}")
