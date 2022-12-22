@@ -1,15 +1,19 @@
 <template>
   <div id="app">
-    <h1>PHOTOALBUM</h1>
+      <HeaderWeb />
+      <MainWeb />
   </div>
 </template>
 
 <script>
+import MainWeb from './components/MainWeb.vue';
+import HeaderWeb from './components/partials/HeaderWeb.vue'
 
 export default {
   name: 'App',
   components: {
-
+    MainWeb,
+    HeaderWeb,
   }
 }
 </script>

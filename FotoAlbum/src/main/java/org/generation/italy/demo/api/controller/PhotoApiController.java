@@ -20,6 +20,6 @@ public class PhotoApiController {
 
 	@GetMapping("/all")
 	public List<Photo> getAll() {
-		return photoService.findAll();
+		return photoService.findAllWithCategory();
 	}
 }
